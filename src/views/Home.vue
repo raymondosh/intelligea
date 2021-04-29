@@ -37,56 +37,57 @@ export default {
   data () {
     return {
       // searchTerm: ''
-      images: [
-        {
-          age: 28,
-          location: 'Abuja',
-          name: 'Emmanuel',
-          image: 'boy.png'
-        },
-        {
-          age: 28,
-          location: 'Abuja',
-          name: 'Emmanuel',
-          image: 'boy.png'
-        },
-        {
-          age: 28,
-          location: 'Abuja',
-          name: 'Emmanuel',
-          image: 'boy.png'
-        },
-        {
-          age: 28,
-          location: 'Abuja',
-          name: 'Emmanuel',
-          image: 'boy.png'
-        },
-        {
-          age: 28,
-          location: 'Abuja',
-          name: 'Emmanuel',
-          image: 'boy.png'
-        },
-        {
-          age: 28,
-          location: 'Abuja',
-          name: 'Emmanuel',
-          image: 'boy.png'
-        },
-        {
-          age: 28,
-          location: 'Abuja',
-          name: 'Emmanuel',
-          image: 'boy.png'
-        },
-        {
-          age: 28,
-          location: 'Abuja',
-          name: 'Emmanuel',
-          image: 'boy.png'
-        }
-      ]
+      images: ''
+      // images: [
+      //   {
+      //     age: 28,
+      //     location: 'Abuja',
+      //     name: 'Emmanuel',
+      //     image: 'boy.png'
+      //   },
+      //   {
+      //     age: 28,
+      //     location: 'Abuja',
+      //     name: 'Emmanuel',
+      //     image: 'boy.png'
+      //   },
+      //   {
+      //     age: 28,
+      //     location: 'Abuja',
+      //     name: 'Emmanuel',
+      //     image: 'boy.png'
+      //   },
+      //   {
+      //     age: 28,
+      //     location: 'Abuja',
+      //     name: 'Emmanuel',
+      //     image: 'boy.png'
+      //   },
+      //   {
+      //     age: 28,
+      //     location: 'Abuja',
+      //     name: 'Emmanuel',
+      //     image: 'boy.png'
+      //   },
+      //   {
+      //     age: 28,
+      //     location: 'Abuja',
+      //     name: 'Emmanuel',
+      //     image: 'boy.png'
+      //   },
+      //   {
+      //     age: 28,
+      //     location: 'Abuja',
+      //     name: 'Emmanuel',
+      //     image: 'boy.png'
+      //   },
+      //   {
+      //     age: 28,
+      //     location: 'Abuja',
+      //     name: 'Emmanuel',
+      //     image: 'boy.png'
+      //   }
+      // ]
     }
   },
   methods: {
@@ -96,9 +97,10 @@ export default {
     async getPhotos () {
       try {
         const res = await api.getPhotos()
-        console.log(res)
+        console.log(res[0])
+        this.images = res
       } catch (error) {
-        console.log(error)
+        // console.log(error)
       }
     }
   },

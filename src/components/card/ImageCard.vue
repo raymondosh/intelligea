@@ -5,26 +5,30 @@
   <!---First gallery-->
   <div class="gallery">
     <div class="image-frame pictures">
-      <img :src="require(`../../assets/icons/${image.image}`)" alt="gallery" />
+      <img :src="image.user.profile_image.small.split('?')[0]" alt="gallery" />
     </div>
     <div class="overlay">
-      <h4 class="white f14">{{ image.name }}, {{ image.age }}</h4>
+      <h4 class="white f14">
+        {{ image.user.name.split(" ")[0] }}, {{ image.user.total_photos }}
+      </h4>
       <div class="location">
         <div class="image-frame icon">
           <img src="../../assets/icons/white_location.png" alt="gallery" />
         </div>
-        <span class="white f14">{{ image.location }}</span>
+        <span class="white f14">{{ image.user.location }}</span>
       </div>
     </div>
 
     <footer>
       <div class="main">
-        <h4 class="blue-100 f14">{{ image.name }}, {{ image.age }}</h4>
+        <h4 class="blue-100 f14">
+          {{ image.user.name.split(" ")[0] }}, {{ image.user.total_photos }}
+        </h4>
         <div class="location">
           <div class="image-frame icon">
             <img src="../../assets/icons/location.png" alt="gallery" />
           </div>
-          <span class="grey-200 f14">{{ image.location }}</span>
+          <span class="grey-200 f14">{{ image.user.location }}</span>
         </div>
         <div class="button">
           <button class="button-primary">

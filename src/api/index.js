@@ -32,7 +32,7 @@ export default new (class {
           Authorization: 'Client-ID vOSaDh8Hmksuy81ulsxLZiVXwXfI5ZAEA5uKeD4GhtQ'
         }
       })
-      if (res.data.status === 'success') {
+      if (res.status === 200) {
         return res.data
       }
       return Promise.reject(res.data)
