@@ -1,7 +1,10 @@
 <template>
   <div>
-    <sidebar></sidebar>
     <navbar></navbar>
+    <sidebar></sidebar>
+    <main>
+      <main-filter></main-filter>
+    </main>
   </div>
 </template>
 
@@ -9,22 +12,24 @@
 // @ is an alias to /src
 import Sidebar from '@/components/layout/Sidebar'
 import Navbar from '@/components/layout/Navbar'
+import MainFilter from '@/components/filter/MainFilter'
 
 export default {
   name: 'Home',
   components: {
     Sidebar,
-    Navbar
+    Navbar,
+    MainFilter
   },
   data () {
     return {
-      searchTerm: ''
-    }
-  },
-  methods: {
-    search () {
-      console.log(this.searchTerm)
+      // searchTerm: ''
     }
   }
+  // methods: {
+  //   search () {
+  //     console.log(this.searchTerm)
+  //   }
+  // }
 }
 </script>
