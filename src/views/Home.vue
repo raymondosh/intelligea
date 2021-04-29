@@ -4,6 +4,7 @@
       <search-input
         v-model="searchTerm"
         @search="searchPhoto"
+        :disable="loading"
         type="text"
         placeholder="Find Something..."
       ></search-input>
@@ -24,7 +25,10 @@
 
     <main>
       <main-filter></main-filter>
-      <section class="galleries-container">
+
+      <preloader v-if="loading"></preloader>
+
+      <section v-else class="galleries-container">
         <div class="galleries">
           <image-card
             v-for="(image, index) in images"
@@ -45,6 +49,7 @@ import ImageCard from '@/components/card/ImageCard'
 import SearchInput from '@/components/input/SearchInput'
 import MainNotification from '../components/notification/MainNotification.vue'
 import ProfileIcon from '../components/profile/ProfileIcon.vue'
+import Preloader from '@/components/preloader/Preloader'
 
 import api from '../api'
 
@@ -56,32 +61,39 @@ export default {
     SearchInput,
     MainFilter,
     ImageCard,
-    MainNotification
+    MainNotification,
+    Preloader
   },
   data () {
     return {
       searchTerm: '',
-      images: ''
+      images: '',
+      loading: false
     }
   },
   methods: {
     async getPhotos () {
       try {
+        this.loading = true
         const res = await api.getPhotos()
         if (!res) return false
+        this.loading = false
         this.images = res
       } catch (error) {
+        this.loading = false
         console.log(error)
       }
     },
     async searchPhoto () {
       try {
-        console.log(this.searchTerm)
+        this.loading = true
         const res = await api.searchPhoto(this.searchTerm)
         if (!res) return false
         this.images = res.results
-        // console.log(res)
+        this.loading = false
+        this.searchTerm = ''
       } catch (error) {
+        this.loading = false
         console.log(error)
       }
     }

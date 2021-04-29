@@ -9,7 +9,13 @@
       class="grey-200"
       v-bind="$attrs"
     />
-    <button type="submit" class="button-primary">Search</button>
+    <button
+      :disabled="disable || isDisable(value)"
+      type="submit"
+      class="button-primary"
+    >
+      Search
+    </button>
   </form>
 </template>
 
@@ -21,6 +27,10 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    disable: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
@@ -29,7 +39,11 @@ export default {
     },
     search () {
       this.$emit('search')
+    },
+    isDisable (value) {
+      return value.length <= 0
     }
-  }
+  },
+  computed: {}
 }
 </script>
