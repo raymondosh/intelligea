@@ -24,6 +24,8 @@ import Navbar from '@/components/layout/Navbar'
 import MainFilter from '@/components/filter/MainFilter'
 import ImageCard from '@/components/card/ImageCard'
 
+import api from '../api'
+
 export default {
   name: 'Home',
   components: {
@@ -86,11 +88,22 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    // search () {
+    //   console.log(this.searchTerm)
+    // },
+    async getPhotos () {
+      try {
+        const res = await api.getPhotos()
+        console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  mounted () {
+    this.getPhotos()
   }
-  // methods: {
-  //   search () {
-  //     console.log(this.searchTerm)
-  //   }
-  // }
 }
 </script>
