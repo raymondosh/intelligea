@@ -59,6 +59,7 @@ button {
 }
 .button-primary {
   background-color: #3a319e;
+  margin-right: 2px;
 }
 .button-danger {
   background-color: #c63635;
@@ -123,6 +124,7 @@ header {
     flex-wrap: wrap-reverse;
     align-content: space-evenly;
     height: 150px;
+    justify-content: flex-start;
   }
 }
 header > .search-container {
@@ -251,10 +253,11 @@ header > .profile {
 }
 @media (max-width: 600px) {
   header .notification-container {
-    flex: 1;
+    /* flex: 1; */
   }
   header > .menuicon {
     display: block;
+    margin: 0 auto 0 0;
   }
 }
 header > .profile .averter {
@@ -322,10 +325,13 @@ header > .profile .averter-image {
   .drawer-wrap > .drawer-overlay {
     display: block;
   }
+  .drawer-wrap {
+    /* display: none; */
+  }
 }
 @media (max-width: 600px) {
-  .drawer {
-    /* display: none; */
+  .drawer-wrap {
+    display: none;
   }
 }
 .drawer h1 {

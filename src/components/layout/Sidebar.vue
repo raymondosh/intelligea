@@ -1,7 +1,7 @@
 <template>
-  <div class="drawer-wrap">
+  <div class="drawer-wrap" v-if="isSidebar">
     <!-- overlay. This section should only be visible when the drawer is open,  and should contain the even handler that will close the drawer-->
-    <div class="drawer-overlay"></div>
+    <!-- <div class="drawer-overlay"></div> -->
     <nav class="drawer">
       <!-- company logo and name -->
       <h1 class="blue-100">
@@ -53,6 +53,12 @@
 <script>
 export default {
   name: 'sidebar',
+  props: {
+    isSidebar: {
+      type: Boolean,
+      required: true
+    }
+  },
   data () {
     return {
       items: [

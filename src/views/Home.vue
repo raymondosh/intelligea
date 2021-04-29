@@ -10,9 +10,9 @@
       ></search-input>
 
       <!-- menuicon. This shold handle the opening of the drawer -->
-      <!-- <div class="menuicon image-frame">
-      <img src="../../assets/icons/menuicon.png" alt="" />
-    </div> -->
+      <div @click="toggleSidebar" class="menuicon image-frame">
+        <img src="../assets/icons/menuicon.png" alt="Hamburger menu" />
+      </div>
 
       <!-- notification -->
       <main-notification></main-notification>
@@ -21,7 +21,7 @@
       <profile-icon></profile-icon>
     </header>
 
-    <sidebar></sidebar>
+    <sidebar :isSidebar="isSidebar"></sidebar>
 
     <main>
       <main-filter></main-filter>
@@ -68,10 +68,14 @@ export default {
     return {
       searchTerm: '',
       images: '',
-      loading: false
+      loading: false,
+      isSidebar: true
     }
   },
   methods: {
+    toggleSidebar () {
+      this.isSidebar = !this.isSidebar
+    },
     async getPhotos () {
       try {
         this.loading = true
