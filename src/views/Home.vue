@@ -3,7 +3,7 @@
     <header>
       <search-input
         v-model="searchTerm"
-        @search="search"
+        @search="searchPhoto"
         type="text"
         placeholder="Find Something..."
       ></search-input>
@@ -65,14 +65,22 @@ export default {
     }
   },
   methods: {
-    search () {
-      console.log(this.searchTerm)
-    },
     async getPhotos () {
       try {
         const res = await api.getPhotos()
         if (!res) return false
         this.images = res
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async searchPhoto () {
+      try {
+        console.log(this.searchTerm)
+        const res = await api.searchPhoto(this.searchTerm)
+        if (!res) return false
+        this.images = res.results
+        // console.log(res)
       } catch (error) {
         console.log(error)
       }
